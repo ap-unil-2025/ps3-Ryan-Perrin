@@ -21,6 +21,7 @@ Many companies use Python for their projects."""
 
 
 def count_words(filename):
+    
     """
     Count total words in the file.
 
@@ -32,10 +33,17 @@ def count_words(filename):
     """
     # TODO: Open file and count words
     # Hint: Use split() to separate words
-    pass
+    
+    with open(filename, 'r') as f: #open the file in read mode
+        text = f.read() #read the text
+        words = text.split()  #split() separate on the spaces
+    return len(words) #returns the number total of words
 
 
 def count_lines(filename):
+    with open(filename, 'r')as f: #open the file in read mode
+        lines = f.readlines() #read all the lines and put them into a list
+    return len(lines) #return the total number of lines
     """
     Count total lines in the file.
 
@@ -46,26 +54,40 @@ def count_lines(filename):
         int: Total number of lines
     """
     # TODO: Open file and count lines
-    pass
 
 
 def count_characters(filename, include_spaces=True):
-    """
+     with open(filename, 'r') as f: #open the file in read mode
+        text = f.read() #read all the text as a single string of characters
+     if not include_spaces: #if we don't want to count spaces and line breaks -> remove them (false)
+        text = text.replace(" ", "").replace("\n", "") #removes spaces and line breaks by replacing them by nothing
+     return len(text) #returns the length of the final string
+"""
+    
     Count characters in the file.
-
     Args:
         filename (str): Name of the file to analyze
         include_spaces (bool): Whether to include spaces in count
-
+    
     Returns:
         int: Total number of characters
-    """
+"""
     # TODO: Open file and count characters
     # If include_spaces is False, don't count spaces
-    pass
-
+     
 
 def find_longest_word(filename):
+    import string #import punctuation
+
+    with open(filename, 'r') as f: #same as usual
+        text = f.read()
+
+    for p in string.punctuation: #general punctuation as p
+        text = text.replace(p, "") #replace all the punctuation and special characters by nothing in order to delete them
+
+    words = text.split() #splits the text into words
+    return max(words, key=len) if words else "" #returns the longest word in the textif there is at least one
+
     """
     Find and return the longest word in the file.
 
@@ -77,10 +99,25 @@ def find_longest_word(filename):
     """
     # TODO: Find the longest word
     # Hint: You might need to remove punctuation
-    pass
+
 
 
 def word_frequency(filename):
+    import string #import puncutations
+    frequency = {} #create an empty dictionnary to stock the the frequency of the words
+
+    with open(filename, 'r') as f: #same than before
+        text = f.read().lower() #put all the text in lower characters in order to not make difference
+
+    for p in string.punctuation:
+        text = text.replace(p, "") #same than before, remove punctuation and special characters
+
+    words = text.split() #split the text in different words
+
+    for word in words: #take all the words separately of the list "words"
+        frequency[word] = frequency.get(word, 0) + 1 #increase by one each time the same word appears
+
+    return frequency
     """
     Return a dictionary of word frequencies.
     Convert words to lowercase and remove punctuation.
