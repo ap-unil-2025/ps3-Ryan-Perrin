@@ -6,7 +6,7 @@ Convert between Celsius and Fahrenheit temperatures.
 def celsius_to_fahrenheit(celsius):
     """
     Convert Celsius to Fahrenheit.
-    Formula: F = (C × 9/5) + 32
+    Formula: F = (C × 9/5) + 32 
 
     Args:
         celsius (float): Temperature in Celsius
@@ -15,7 +15,7 @@ def celsius_to_fahrenheit(celsius):
         float: Temperature in Fahrenheit
     """
     # TODO: Implement this function
-    pass
+    return (celsius * 9/5) + 32 #implementation of the formula above for the conversion celsius to fahrenheit
 
 
 def fahrenheit_to_celsius(fahrenheit):
@@ -30,7 +30,7 @@ def fahrenheit_to_celsius(fahrenheit):
         float: Temperature in Celsius
     """
     # TODO: Implement this function
-    pass
+    return (fahrenheit - 32) * 5/9 #implementation of the formula above for the conversion fahrenheit to celsius
 
 
 def temperature_converter():
@@ -51,7 +51,19 @@ def temperature_converter():
     # - Validate input
     # - Perform conversion
     # - Display result rounded to 2 decimal places
-    pass
+    try : #if the input is correct, it will run the code below. Otherwise, it will go to except ValueError
+        temp = float(input("Enter the termperature value : ")) #converts the string into a float
+        unit = input("Enter the unit (C for celsius and F for fahrenheit) : ").strip().upper() #removes spaces and converts the input into an uppercase if it wasn't one
+        if unit == "C" : #if unit is celsius, we convert to fahrenheit
+            result = celsius_to_fahrenheit(temp)
+            print(f"{temp:.2f}°C is {result:.2f}°F") #.2f : formats the output with 2 decimal places
+        elif unit == "F": #if unit is fahrenheit, we convert to celsius
+            result = fahrenheit_to_celsius(temp)
+            print(f"{temp:.2f}°F is {result:.2f}°C")
+        else:
+            print ("Please enter C or F.") #prevents if something else than c or f is typed
+    except ValueError:
+        print("Invalid input. Please enter a numeric temperature value") #informs that there is an error if something else than a numeric value is entered
 
 
 # Test cases (DO NOT MODIFY)
