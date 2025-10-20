@@ -61,7 +61,7 @@ def count_characters(filename, include_spaces=True):
         text = f.read() #read all the text as a single string of characters
      if not include_spaces: #if we don't want to count spaces and line breaks -> remove them (false)
         text = text.replace(" ", "").replace("\n", "") #removes spaces and line breaks by replacing them by nothing
-     return len(text) #returns the length of the final string
+     return len(text) #returns the length of the final string 
 """
     
     Count characters in the file.
