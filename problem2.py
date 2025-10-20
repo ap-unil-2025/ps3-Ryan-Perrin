@@ -63,7 +63,7 @@ def temperature_converter():
         else:
             print ("Please enter C or F.") #prevents if something else than c or f is typed
     except ValueError:
-        print("Invalid input. Please enter a numeric temperature value") #informs that there is an error if something else than a numeric value is entered
+        print("Invalid input. Please enter a numeric temperature value") 
 
 
 # Test cases (DO NOT MODIFY)
