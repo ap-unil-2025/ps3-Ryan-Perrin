@@ -58,7 +58,7 @@ def analyze_numbers(numbers):
     "even_count": sum(1 for n in numbers if n.is_integer() and int(n) % 2 == 0), #count even numbers with the modulo that shows that the number is divisible by 2
     "odd_count": sum(1 for n in numbers if n.is_integer() and int(n) % 2 != 0),} #count odd numbers with the modulo that shows that these numbers are not divisible by 2 (into an int)
 
-    # TODO: Calculate count
+    # TODO: Calculate count 
     # TODO: Calculate sum
     # TODO: Calculate average
     # TODO: Find minimum
